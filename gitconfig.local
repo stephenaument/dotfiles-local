@@ -1,0 +1,6 @@
+[alias]
+  la = log --oneline --graph --all
+
+[user]
+  name = "Stephen Aument"
+  email = "saument@gmail.com"

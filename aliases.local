@@ -1,0 +1,2 @@
+alias l="ls -alhF"
+alias please='sudo $(fc -ln -1)'
