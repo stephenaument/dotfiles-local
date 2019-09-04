@@ -2,6 +2,12 @@
   la = log --oneline --graph --all
   br = branch
 
+[github]
+  user = stephenaument
+
+[gitlab]
+  user = step2
+
 [user]
   name = "Stephen Aument"
   email = "saument@gmail.com"

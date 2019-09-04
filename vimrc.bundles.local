@@ -1,3 +1,5 @@
 Plug 'altercation/vim-colors-solarized'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
+Plug 'leafgarland/typescript-vim'
+Plug 'burnettk/vim-angular'
