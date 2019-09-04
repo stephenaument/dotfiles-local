@@ -1,5 +1,6 @@
 [alias]
   la = log --oneline --graph --all
+  br = branch
 
 [user]
   name = "Stephen Aument"
