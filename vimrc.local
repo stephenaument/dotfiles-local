@@ -6,11 +6,17 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+let mapleader = ","
+set hlsearch
 map <Leader><space> :nohl<cr>
 
 map gh i{% highlight ruby linedivs %}^M{% endhighlight %}^[O
-map <f4> :w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'rake && tmux resize-pane -Z -t1' c-j")<cr>
+map <f5> :w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'rake && tmux resize-pane -Z -t1' c-j")<cr>
+map <f4> :w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'bin/rspec % && tmux resize-pane -Z -t1' c-j")<cr>
+map <f3> :w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 !! c-j")<cr>
 map <f6> :call system("tmux resize-pane -Z -t1") <cr>
 map <f7> :call system("tmux resize-pane -y 40 -t2") <cr>
 
-map ,n :NERDTreeToggle<CR>
+map <Leader>n :NERDTreeToggle<CR>
+
+set tags^=./.git/tags;

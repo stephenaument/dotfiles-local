@@ -23,4 +23,4 @@ export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
