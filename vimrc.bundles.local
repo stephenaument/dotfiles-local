@@ -1,5 +1,6 @@
 Plug 'altercation/vim-colors-solarized'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'godlygeek/tabular'
+Plug 'mattn/emmet-vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'mattn/emmet-vim'
