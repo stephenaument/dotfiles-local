@@ -29,4 +29,7 @@ fi
 
 rm -f ~/.zcompdump; compinit
 
+alias vim="stty stop '' -ixoff ; vim"
+ttyctl -f
+
 # source $ZSH/oh-my-zsh.sh

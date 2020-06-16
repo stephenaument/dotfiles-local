@@ -16,6 +16,12 @@ map <f4> :w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'bin/rs
 map <f3> :w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 !! c-j")<cr>
 map <f6> :call system("tmux resize-pane -Z -t1") <cr>
 map <f7> :call system("tmux resize-pane -y 40 -t2") <cr>
+map <f8> :w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'rake && tmux resize-pane -Z -t1' c-j")<cr>
+vmap <f8> <c-o>:w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'rake && tmux resize-pane -Z -t1' c-j")<cr>
+imap <f8> <esc>:w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'rake && tmux resize-pane -Z -t1' c-j")<cr>
+noremap <silent> <c-s> :w<cr>
+inoremap <c-s> <esc>:w<cr>
+vmap <c-s> v:w<cr>gv
 
 map <Leader>n :NERDTreeToggle<CR>
 
