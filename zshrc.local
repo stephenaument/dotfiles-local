@@ -5,6 +5,7 @@ ZSH_THEME="robbyrussell"
 export EDITOR='vim'
 
 export PATH="$HOME/.fastlane/bin:$PATH"
+export PATH="$HOME/.maven/apache-maven-3.6.3/bin:$PATH"
 
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
@@ -16,8 +17,11 @@ export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 
+
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+. $HOME/.asdf/plugins/java/set-java-home.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -33,3 +37,21 @@ alias vim="stty stop '' -ixoff ; vim"
 ttyctl -f
 
 # source $ZSH/oh-my-zsh.sh
+export DD_API_KEY=cbf532cdd30fcdc882e7bee770223cd9
+export DD_APP_KEY=5216d1aea9a14a22d3deb3bf2184f43cafe4030b
+export DD_TRACE_ANALYTICS_ENABLED=true
+
+export HONEYBADGER_API_KEY=81a67b84
+export HONEYBADGER_REPORT_DATA=false
+
+confirmOMG() {
+  read "brave?OMG! Here be HUGE dragons. Continue? "
+  case "$brave" in
+    [yY][eE][sS]|[yY])
+      true
+      ;;
+    *)
+      false
+      ;;
+  esac
+}

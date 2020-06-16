@@ -1,2 +1,11 @@
 alias l="ls -alhF"
 alias please='sudo $(fc -ln -1)'
+alias reload='. ~/.zshrc'
+alias login-aws='gimme-aws-creds && aws ecr get-login --region=us-east-1 --no-include-email && reload | zsh'
+alias mux=tmuxinator
+alias kapi="kill -9 $(ps aux | grep sbt | grep run | awk '{print $2}')"
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+
+# Include aliases containing sensitive info that shouldn't be committed to source control
+[[ -f ~/.aliases.sensitive.local ]] && source ~/.aliases.sensitive.local
