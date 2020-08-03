@@ -1,11 +1,23 @@
+# Docker
+alias docker_clean_images='docker rmi $(docker images --all --filter=dangling=true --quiet)'
+alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created --quiet)'
+alias dlog="docker logs --follow \$(docker ps | grep --invert-match CONTAINER | fzf --select-1 | awk '{print \$1}')"
+alias dkill="docker kill \$(docker ps | grep --invert-match CONTAINER | fzf --select-1 | awk '{print \$1}')"
+
+# Git
+alias gbd="git br -D \$(git branch | grep --invert-match '\*|HEAD' | sort | uniq | fzf --select-1)"
+alias gca="git checkout \$(git branch --all | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | grep --invert-match '\*|HEAD' | sort |uniq | fzf --select-1)"
+alias gco="git checkout \$(git branch | sort | fzf --select-1)"
+alias gcr="git checkout \$(git branch --remotes | sed -E 's/origin\/(.*)/\1/' | grep --invert-match '\*|HEAD' | sort |uniq | fzf --select-1)"
+
+# Misc
+alias vim="stty stop '' -ixoff ; nvim"
 alias l="ls -alhF"
-alias please='sudo $(fc -ln -1)'
-alias reload='. ~/.zshrc'
-alias login-aws='gimme-aws-creds && aws ecr get-login --region=us-east-1 --no-include-email && reload | zsh'
+alias login-aws='gimme-aws-creds && aws ecr get-login-password --region=us-east-1 && reload'
 alias mux=tmuxinator
-alias kapi="kill -9 $(ps aux | grep sbt | grep run | awk '{print $2}')"
-alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
-alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+alias please='sudo $(fc -ln -1)'
+alias prev="fzf --preview 'cat {}'"
+alias weather='curl wttr.in/76209?u'
 
 # Include aliases containing sensitive info that shouldn't be committed to source control
 [[ -f ~/.aliases.sensitive.local ]] && source ~/.aliases.sensitive.local

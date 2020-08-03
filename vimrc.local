@@ -13,8 +13,8 @@ map <Leader><space> :nohl<cr>
 vmap gh i{% highlight ruby linedivs %}^M{% endhighlight %}^[O
 map <f2> :call system("tmux resize-pane -y 10 -t2") <cr>
 map <f3> :call system("tmux resize-pane -y 40 -t2") <cr>
-map <f4> :call system("tmux resize-pane -Z -t1") <cr>
 map <f5> :w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'make && tmux resize-pane -Z -t1' c-j")<cr>
+imap <f5> <esc>:w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'make && tmux resize-pane -Z -t1' c-j")<cr>
 map <f6> :call system("tmux resize-pane -Z -t1") <cr>
 map <f7> :call system("tmux resize-pane -y 40 -t2") <cr>
 map <f8> :w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
@@ -25,16 +25,47 @@ imap <f10> <esc>:w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 
 map <f10> :w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'gradle test --info && tmux resize-pane -Z -t1' c-j")<cr>
 map ^S :w<cr>
 
-map <Leader>n :NERDTreeToggle<CR>
+" CoC mappings
+if filereadable($HOME . "/.vimrc.coc")
+  source ~/.vimrc.coc
+endif
 
-set tags^=./.git/tags;
+map <Leader>n :NERDTreeToggle<CR>
 
 " Spellcheck for markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.markdown setlocal spell
 
-" Java completion
+" Java Complete 2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd FileType java JCEnable
+let g:JavaComplete_SourcesPath = './app'
+
+let g:coc_global_extensions = [
+      \ 'coc-css',
+      \ 'coc-docker',
+      \ 'coc-html',
+      \ 'coc-java',
+      \ 'coc-json',
+      \ 'coc-lists',
+      \ 'coc-markdownlint',
+      \ 'coc-pairs',
+      \ 'coc-python',
+      \ 'coc-rls',
+      \ 'coc-snippets',
+      \ 'coc-solargraph',
+      \ 'coc-tsserver',
+      \ 'coc-vimlsp',
+      \ 'coc-yank'
+      \]
+
+" Alias GBlame to GPraise
+for s:cmd in ['Praise']
+  if exists(':G' . tolower(s:cmd)) != 2
+    exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd) 'exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", "' . tolower(s:cmd) . ' " . <q-args>)'
+  endif
+endfor
+unlet s:cmd
+
+
 
 set expandtab

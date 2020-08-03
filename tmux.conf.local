@@ -62,3 +62,10 @@ set -g status-right "#[fg=cyan]%R #(~/bin/battery)"
 
 # break-join panes
 bind-key b command-prompt "break-pane"
+
+# Neovim checkhealth recommendations
+set-option -sg escape-time 10
+set-option -sa terminal-overrides ',xterm-256color:RGB'
+
+# Enable mouse mode (tmux 2.1 and above)
+set -g mouse on

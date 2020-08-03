@@ -1,8 +1,8 @@
 Plug 'altercation/vim-colors-solarized'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
-Plug 'artur-shaik/vim-javacomplete2'
 Plug 'mattn/emmet-vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'kchmck/vim-coffee-script'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
