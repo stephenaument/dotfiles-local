@@ -11,26 +11,22 @@ set hlsearch
 map <Leader><space> :nohl<cr>
 
 vmap gh i{% highlight ruby linedivs %}^M{% endhighlight %}^[O
-map <f2> :call system("tmux resize-pane -y 10 -t2") <cr>
-map <f3> :call system("tmux resize-pane -y 40 -t2") <cr>
+map <f3> :source ~/.vimrc.local <cr>
 map <f5> :w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'make && tmux resize-pane -Z -t1' c-j")<cr>
 imap <f5> <esc>:w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'make && tmux resize-pane -Z -t1' c-j")<cr>
 map <f6> :call system("tmux resize-pane -Z -t1") <cr>
 map <f7> :call system("tmux resize-pane -y 40 -t2") <cr>
 map <f8> :w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
 imap <f8> <esc>:w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
-map <f9> :call system("tmux resize-pane -y 10 -t2") <cr>
-imap <f9> :call system("tmux resize-pane -y 10 -t2") <cr>
+imap <f9> <esc>:w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'mvn test && tmux resize-pane -Z -t1' c-j")<cr>
+map <f9> :w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'mvn test && tmux resize-pane -Z -t1' c-j")<cr>
 imap <f10> <esc>:w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'gradle test --info && tmux resize-pane -Z -t1' c-j")<cr>
 map <f10> :w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'gradle test --info && tmux resize-pane -Z -t1' c-j")<cr>
 map ^S :w<cr>
 
-" CoC mappings
-if filereadable($HOME . "/.vimrc.coc")
-  source ~/.vimrc.coc
-endif
-
 map <Leader>n :NERDTreeToggle<CR>
+
+map <Leader>t :Git<CR>
 
 " Spellcheck for markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
@@ -66,6 +62,9 @@ for s:cmd in ['Praise']
 endfor
 unlet s:cmd
 
-
-
 set expandtab
+
+" CoC mappings
+if filereadable($HOME . "/.vimrc.coc")
+  source ~/.vimrc.coc
+endif
