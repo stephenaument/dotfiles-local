@@ -30,6 +30,9 @@ map <Leader>t :Git<CR>
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.markdown setlocal spell
 
+" Autoformat cairo files on save
+let g:cairo_linter_autosave = 1
+
 " Java Complete 2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 let g:JavaComplete_SourcesPath = './app'

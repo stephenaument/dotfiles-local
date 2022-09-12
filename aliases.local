@@ -18,6 +18,7 @@ alias mux=tmuxinator
 alias please='sudo $(fc -ln -1)'
 alias prev="fzf --preview 'cat {}'"
 alias weather='curl wttr.in/76209?u'
+alias reload='exec zsh'
 
 # Include aliases containing sensitive info that shouldn't be committed to source control
 [[ -f ~/.aliases.sensitive.local ]] && source ~/.aliases.sensitive.local

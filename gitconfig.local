@@ -11,3 +11,6 @@
 [user]
   name = "Stephen Aument"
   email = "saument@gmail.com"
+
+[credential]
+  helper = osxkeychain

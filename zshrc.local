@@ -21,29 +21,30 @@ export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 # enable pgcli long field wrapping with LESS
 export LESS="-XFR"
 
+setopt inc_append_history
 
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 plugins=(git)
 
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -U bashcompinit
+  bashcompinit
 fi
 
-rm -f ~/.zcompdump; compinit
+# rm -f ~/.zcompdump; compinit
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
 
 ttyctl -f
 
 # source $ZSH/oh-my-zsh.sh
-export DD_API_KEY=cbf532cdd30fcdc882e7bee770223cd9
-export DD_APP_KEY=5216d1aea9a14a22d3deb3bf2184f43cafe4030b
-export DD_TRACE_ANALYTICS_ENABLED=true
-
-export HONEYBADGER_API_KEY=81a67b84
-export HONEYBADGER_REPORT_DATA=false
+# Include config containing sensitive info that shouldn't be committed to source control
+[[ -f ~/.zshrc.sensitive.local ]] && source ~/.zshrc.sensitive.local
 
 confirmOMG() {
   read "brave?OMG! Here be HUGE dragons. Continue? "

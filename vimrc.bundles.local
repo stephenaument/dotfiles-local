@@ -6,3 +6,6 @@ Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'kchmck/vim-coffee-script'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'dmdque/solidity.vim'
+Plug 'miguelmota/cairo.vim'
+Plug 'tomlion/vim-solidity'
