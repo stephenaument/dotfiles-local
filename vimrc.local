@@ -4,7 +4,9 @@ filetype plugin indent on
 
 syntax enable
 set background=dark
-colorscheme solarized
+set termguicolors
+let ayucolor="dark"
+colorscheme ayu
 
 let mapleader = ","
 set hlsearch
@@ -16,10 +18,12 @@ map <f5> :w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'make &
 imap <f5> <esc>:w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'make && tmux resize-pane -Z -t1' c-j")<cr>
 map <f6> :call system("tmux resize-pane -Z -t1") <cr>
 map <f7> :call system("tmux resize-pane -y 40 -t2") <cr>
-imap <f8> <esc>:w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'rake && tmux resize-pane -Z -t1' c-j")<cr>
-map <f8> :w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'rake && tmux resize-pane -Z -t1' c-j")<cr>
-map <f9> :w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
-imap <f9> <esc>:w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
+imap <f8> <esc>:w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'bundle exec rspec " . expand("%") . " && tmux resize-pane -Z -t1' c-j")<cr>
+map <f8> :w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'bundle exec rspec " . expand("%") . " && tmux resize-pane -Z -t1' c-j")<cr>
+imap <f9> <esc>:w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'bundle exec rspec " . expand("%") . ":" . line(".") . " && tmux resize-pane -Z -t1' c-j")<cr>
+map <f9> :w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'bundle exec rspec " . expand("%") . ":" . line(".") . " && tmux resize-pane -Z -t1' c-j")<cr>
+map <f10> :w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
+imap <f10> <esc>:w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
 map ^S :w<cr>
 
 map <Leader>n :NERDTreeToggle<CR>
@@ -64,6 +68,27 @@ endfor
 unlet s:cmd
 
 set expandtab
+
+" ALE linter settings
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+ let g:ale_fix_on_save = 1
+
+let g:ale_fixers = {
+      \  'javascript': ['eslint'],
+      \  'ruby': ['rubocop']
+      \}
+
+let g:ale_linters = {
+      \  'javascript': ['eslint'],
+      \  'ruby': ['rubocop']
+      \}
+
+" Only run linters named in ale_liners setting
+let g:ale_linters_explicit = 1
+
+" Disable ALE auto highlights
+let g:ale_set_highlights = 0
 
 " CoC mappings
 if filereadable($HOME . "/.vimrc.coc")

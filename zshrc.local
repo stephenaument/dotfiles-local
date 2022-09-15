@@ -46,6 +46,17 @@ ttyctl -f
 # Include config containing sensitive info that shouldn't be committed to source control
 [[ -f ~/.zshrc.sensitive.local ]] && source ~/.zshrc.sensitive.local
 
+# SmartRank utility functions
+function dumpdb {
+  bundle exec cap $1 aws:db_copy > ${1}-db.dump
+}
+
+function loaddb {
+  dev_db=`grep _development config/database.yml | awk '{ print $2 }'`
+  bundle exec rake db:drop db:create && pg_restore -v -c -O -x -d $dev_db ${1}-db.dump
+  bundle exec rails db:environment:set RAILS_ENV=development
+}
+
 confirmOMG() {
   read "brave?OMG! Here be HUGE dragons. Continue? "
   case "$brave" in
