@@ -52,6 +52,8 @@ unbind %
 bind - split-window -v -c "#{pane_current_path}"
 bind | split-window -h -c "#{pane_current_path}"
 
+bind -n C-x clear-history
+
 
 # Rather than constraining window size to the maximum size of any client
 # connected to the *session*, constrain window size to the maximum size of any

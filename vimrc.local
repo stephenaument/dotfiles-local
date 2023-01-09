@@ -1,8 +1,8 @@
 execute pathogen#infect()
-syntax on
+" syntax on
 filetype plugin indent on
 
-syntax enable
+" syntax enable
 set background=dark
 set termguicolors
 let ayucolor="dark"
@@ -26,9 +26,17 @@ map <f10> :w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
 imap <f10> <esc>:w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
 map ^S :w<cr>
 
+map <Leader>g :G<CR>
+map <Leader>aa :A<CR>
+map <Leader>av :AV<CR>
+map <Leader>rr :R<CR>
+map <Leader>rv :RV<CR>
+
 map <Leader>n :NERDTreeToggle<CR>
 
 map <Leader>t :Git<CR>
+
+nnoremap <Leader>* *:AgFromSearch<CR>
 
 " Spellcheck for markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
@@ -59,6 +67,8 @@ let g:coc_global_extensions = [
       \ 'coc-yank'
       \]
 
+nmap <silent> <Leader>, :cclose<CR>
+
 " Alias GBlame to GPraise
 for s:cmd in ['Praise']
   if exists(':G' . tolower(s:cmd)) != 2
@@ -68,6 +78,7 @@ endfor
 unlet s:cmd
 
 set expandtab
+
 
 " ALE linter settings
 let g:airline#extensions#ale#enabled = 1
@@ -81,7 +92,7 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
       \  'javascript': ['eslint'],
-      \  'ruby': ['rubocop']
+      \  'ruby': ['brakeman', 'reek']
       \}
 
 " Only run linters named in ale_liners setting
@@ -89,6 +100,8 @@ let g:ale_linters_explicit = 1
 
 " Disable ALE auto highlights
 let g:ale_set_highlights = 0
+
+let g:blockle_mapping = '<Leader>f'
 
 " CoC mappings
 if filereadable($HOME . "/.vimrc.coc")

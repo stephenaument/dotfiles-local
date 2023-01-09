@@ -58,7 +58,7 @@ function loaddb {
 }
 
 confirmOMG() {
-  read "brave?OMG! Here be HUGE dragons. Continue? "
+  read "brave? ZOMG! Here be HUGE dragons. Continue? "
   case "$brave" in
     [yY][eE][sS]|[yY])
       true
@@ -67,6 +67,15 @@ confirmOMG() {
       false
       ;;
   esac
+}
+
+exercism () {
+  local out
+  readarray -t out < <(command exercism "$@")
+  printf '%s\n' "${out[@]}"
+  if [[ $1 == "download" && -d "${out[-1]}" ]]; then
+    cd "${out[-1]}" || return 1
+  fi
 }
 
 curl wttr.in/76209?u
