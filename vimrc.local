@@ -1,4 +1,4 @@
-execute pathogen#infect()
+" execute pathogen#infect()
 " syntax on
 filetype plugin indent on
 
@@ -14,17 +14,18 @@ map <Leader><space> :nohl<cr>
 
 vmap gh i{% highlight ruby linedivs %}^M{% endhighlight %}^[O
 map <f3> :source ~/.vimrc.local <cr>
-map <f5> :w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'make && tmux resize-pane -Z -t1' c-j")<cr>
-imap <f5> <esc>:w<cr>:call system("tmux resize-pane -y 20 -t2 && tmux send -t2 'make && tmux resize-pane -Z -t1' c-j")<cr>
-map <f6> :call system("tmux resize-pane -Z -t1") <cr>
-map <f7> :call system("tmux resize-pane -y 40 -t2") <cr>
-imap <f8> <esc>:w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'bundle exec rspec " . expand("%") . " && tmux resize-pane -Z -t1' c-j")<cr>
-map <f8> :w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'bundle exec rspec " . expand("%") . " && tmux resize-pane -Z -t1' c-j")<cr>
-imap <f9> <esc>:w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'bundle exec rspec " . expand("%") . ":" . line(".") . " && tmux resize-pane -Z -t1' c-j")<cr>
-map <f9> :w<cr>:call system("tmux resize-pane -y 10 -t2 && tmux send -t2 'bundle exec rspec " . expand("%") . ":" . line(".") . " && tmux resize-pane -Z -t1' c-j")<cr>
+map <f4> :call system("kitty @ resize-window --match title:Rake --increment -40 --axis vertical") <cr>
+map <f6> :call system("kitty @ close-window --match title:Rake")<cr>
+map <f7> :call system("kitty @ resize-window --match title:Rake --increment 40 --axis vertical && kitty @ scroll-window --match title:Rake 40") <cr>
+imap <f8> <esc>:w<cr>:call system("kitty @ launch --title=Rake --cwd=current --dont-take-focus --allow-remote-control")<cr>
+map <f8> :w<cr>:call system("kitty @ launch --title=Rake --cwd=current --dont-take-focus --allow-remote-control")<cr>
+imap <f9> <esc>:w<cr>:call system("kitty @ send-text --match title:Rake rake \r")<cr>
+map <f9> :w<cr>:call system("kitty @ send-text --match title:Rake rake \r")<cr>
+
+
 map <f10> :w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
 imap <f10> <esc>:w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
-map ^S :w<cr>
+map <c-s> :w<cr>
 
 map <Leader>g :G<CR>
 map <Leader>aa :A<CR>
@@ -33,8 +34,6 @@ map <Leader>rr :R<CR>
 map <Leader>rv :RV<CR>
 
 map <Leader>n :NERDTreeToggle<CR>
-
-map <Leader>t :Git<CR>
 
 nnoremap <Leader>* *:AgFromSearch<CR>
 

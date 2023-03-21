@@ -13,3 +13,5 @@ Plug 'rainerborene/vim-reek'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'github/copilot.vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
