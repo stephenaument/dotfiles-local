@@ -17,11 +17,10 @@ map <f3> :source ~/.vimrc.local <cr>
 map <f4> :call system("kitty @ resize-window --match title:Rake --increment -40 --axis vertical") <cr>
 map <f6> :call system("kitty @ close-window --match title:Rake")<cr>
 map <f7> :call system("kitty @ resize-window --match title:Rake --increment 40 --axis vertical && kitty @ scroll-window --match title:Rake 40") <cr>
-imap <f8> <esc>:w<cr>:call system("kitty @ launch --title=Rake --cwd=current --dont-take-focus --allow-remote-control")<cr>
-map <f8> :w<cr>:call system("kitty @ launch --title=Rake --cwd=current --dont-take-focus --allow-remote-control")<cr>
-imap <f9> <esc>:w<cr>:call system("kitty @ send-text --match title:Rake rake \r")<cr>
-map <f9> :w<cr>:call system("kitty @ send-text --match title:Rake rake \r")<cr>
-
+imap <f8> <esc>:w<cr>:call system("kitty @ goto-layout fat && kitty @ send-text --match title:Rake rake\r")<cr>
+map <f8> :w<cr>:call system("kitty @ goto-layout fat && kitty @ send-text --match title:Rake rake\r")<cr>
+imap <f9> <esc>:w<cr>:call system("kitty @ launch --title=Rake --cwd=current --dont-take-focus --allow-remote-control")<cr>
+map <f9> :w<cr>:call system("kitty @ launch --title=Rake --cwd=current --dont-take-focus --allow-remote-control")<cr>
 
 map <f10> :w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>
 imap <f10> <esc>:w<cr> :call system("tmux resize-pane -y 10 -t2") <cr>

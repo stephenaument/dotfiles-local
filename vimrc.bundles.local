@@ -4,7 +4,7 @@ Plug 'godlygeek/tabular'
 Plug 'mattn/emmet-vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'miguelmota/cairo.vim'
 Plug 'tomlion/vim-solidity'
 Plug 'w0rp/ale'
